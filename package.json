@@ -1,0 +1,40 @@
+{
+  "name": "pairing-systems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-react": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BushraAlabsi/Students-Pairing-System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BushraAlabsi/Students-Pairing-System/issues"
+  },
+  "homepage": "https://github.com/BushraAlabsi/Students-Pairing-System#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "jquery": "^3.1.1",
+    "mongoose": "^5.2.8",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.17.3",
+    "npm": "^5.8.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^1.13.2",
+    "babel-core": "^6.17.0"
+  }
+}
