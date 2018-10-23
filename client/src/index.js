@@ -1,42 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import Starter from './components/starter.jsx';
 import $ from 'jquery';
-
-
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import Entry from './components/entry.js';
+import Students from './components/students.js';
+import Pairing from './components/pairing.js';
+import History from './components/history.js';
 // const App = (props) => <Starter num={ props.number } />;
 class App extends React.Component {
 
-insert(){
-	//var number = this.state.number;
-
-	$.ajax({
-		method: 'POST',
-		url: '/api/student/',
-		data: {"name":"xyz","level": 4},
-		success: function (data) {
-			alert("added successfully!")
-			console.log("success",data)
-		}
-	})
-	
-}
-
-
-put(){
-	//var number = this.state.number;
-
-	$.ajax({
-		method: 'POST',
-		url: '/api/history',
-		data: {"table":[{student1:'hanan', student2:'bushra'},{student1:'Alaa', student2:'besslan'}]},
-		success: function (data) {
-			alert("added successfully!")
-			console.log("success",data)
-		}
-	})
-	
-}
 
 delete(){
 	//var number = this.state.number;
@@ -52,14 +24,24 @@ delete(){
 	})
 	
 }
+
+pairingWrap(){
+	return (
+			<History />
+		)
+}
+
 render(){
 return (
-	<div>
-<button onClick = {this.insert.bind(this)}>ADD student!</button>
-<button onClick = {this.put.bind(this)}>add history! </button>
-<button onClick = {this.delete.bind(this)}>DELETE! </button>
 
-</div>
+    			<Router>
+		      		<div>
+						<Route exact path='/' component= {Entry}/>
+						<Route exact path='/history' render={() => this.pairingWrap()}/>
+			    		<Route exact path='/pairing'  component={Pairing}/>
+			    		<Route exact path='/students'  component={Students}/>
+		     		</div>
+		      	</Router>
 )
 		
 		

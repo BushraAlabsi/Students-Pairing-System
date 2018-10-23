@@ -96,6 +96,21 @@ app.put('/api/student/:studentId', (req, res) => {
 
 });
 
+app.delete('/api/student/:id', (req, res)=> {
+        const id = req.params.id;
+        database.Student.findByIdAndRemove(id)
+        .then(()=>{
+            res.send('removed')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+app.get('/*', function (req, res) {
+res.render("index");	
+});
+
 const port = process.env.PORT || 3000;
 
 const server = app
