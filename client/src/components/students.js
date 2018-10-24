@@ -72,7 +72,7 @@ class Students extends React.Component {
 					{ this.state.students.map( (student) => {
 												return(
 														<Student student={student}
-														 getStudents = {()=> {getStudents()}} />	
+														 getStudents = {()=> {this.getStudents()}} />	
 														
 												)
 											}

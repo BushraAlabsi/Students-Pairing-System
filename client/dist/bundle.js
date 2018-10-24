@@ -37079,19 +37079,9 @@
 						),
 						this.state.students.map(function (student) {
 							return _react2.default.createElement(_student2.default, { student: student,
-								getStudents: function (_getStudents) {
-									function getStudents() {
-										return _getStudents.apply(this, arguments);
-									}
-	
-									getStudents.toString = function () {
-										return _getStudents.toString();
-									};
-	
-									return getStudents;
-								}(function () {
-									getStudents();
-								}) });
+								getStudents: function getStudents() {
+									_this4.getStudents();
+								} });
 						})
 					)
 				);
