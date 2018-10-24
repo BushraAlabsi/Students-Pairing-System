@@ -73,11 +73,11 @@
 	
 	var _students2 = _interopRequireDefault(_students);
 	
-	var _pairing = __webpack_require__(/*! ./components/pairing.js */ 230);
+	var _pairing = __webpack_require__(/*! ./components/pairing.js */ 231);
 	
 	var _pairing2 = _interopRequireDefault(_pairing);
 	
-	var _history = __webpack_require__(/*! ./components/history.js */ 231);
+	var _history = __webpack_require__(/*! ./components/history.js */ 232);
 	
 	var _history2 = _interopRequireDefault(_history);
 	
@@ -89,59 +89,34 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	// const App = (props) => <Starter num={ props.number } />;
 	var App = function (_React$Component) {
-		_inherits(App, _React$Component);
+			_inherits(App, _React$Component);
 	
-		function App() {
-			_classCallCheck(this, App);
+			function App() {
+					_classCallCheck(this, App);
 	
-			return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-		}
+					return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+			}
 	
-		_createClass(App, [{
-			key: 'delete',
-			value: function _delete() {
-				//var number = this.state.number;
-	
-				_jquery2.default.ajax({
-					method: 'PUT',
-					url: '/api/student/5bcf50a3fd7aee2f37b0174a',
-					data: { "name": "xyz", "level": 3 },
-					success: function success(data) {
-						alert("added successfully!");
-						console.log("success", data);
+			_createClass(App, [{
+					key: 'render',
+					value: function render() {
+							return _react2.default.createElement(
+									_reactRouterDom.BrowserRouter,
+									null,
+									_react2.default.createElement(
+											'div',
+											null,
+											_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _entry2.default }),
+											_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/history', component: _history2.default }),
+											_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pairing', component: _pairing2.default }),
+											_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/students', component: _students2.default })
+									)
+							);
 					}
-				});
-			}
-		}, {
-			key: 'pairingWrap',
-			value: function pairingWrap() {
-				return _react2.default.createElement(_history2.default, null);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var _this2 = this;
+			}]);
 	
-				return _react2.default.createElement(
-					_reactRouterDom.BrowserRouter,
-					null,
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _entry2.default }),
-						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/history', render: function render() {
-								return _this2.pairingWrap();
-							} }),
-						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/pairing', component: _pairing2.default }),
-						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/students', component: _students2.default })
-					)
-				);
-			}
-		}]);
-	
-		return App;
+			return App;
 	}(_react2.default.Component);
 	
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
@@ -36988,6 +36963,10 @@
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
+	var _student = __webpack_require__(/*! ./student.js */ 230);
+	
+	var _student2 = _interopRequireDefault(_student);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36996,13 +36975,13 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Student = function (_React$Component) {
-		_inherits(Student, _React$Component);
+	var Students = function (_React$Component) {
+		_inherits(Students, _React$Component);
 	
-		function Student() {
-			_classCallCheck(this, Student);
+		function Students() {
+			_classCallCheck(this, Students);
 	
-			var _this = _possibleConstructorReturn(this, (Student.__proto__ || Object.getPrototypeOf(Student)).call(this));
+			var _this = _possibleConstructorReturn(this, (Students.__proto__ || Object.getPrototypeOf(Students)).call(this));
 	
 			_this.state = {
 				students: [],
@@ -37012,7 +36991,7 @@
 			return _this;
 		}
 	
-		_createClass(Student, [{
+		_createClass(Students, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				this.getStudents();
@@ -37034,9 +37013,6 @@
 				});
 			}
 		}, {
-			key: 'editStudent',
-			value: function editStudent() {}
-		}, {
 			key: 'addStudent',
 			value: function addStudent() {
 				var _this3 = this;
@@ -37054,26 +37030,9 @@
 				});
 			}
 		}, {
-			key: 'deleteStudent',
-			value: function deleteStudent(id) {
-				var _this4 = this;
-	
-				_jquery2.default.ajax({
-					method: 'DELETE',
-					url: '/api/student/' + id,
-					success: function success(students) {
-						_this4.getStudents();
-						console.log("success");
-					},
-					error: function error(data) {
-						console.error('Failed to get students', data);
-					}
-				});
-			}
-		}, {
 			key: 'render',
 			value: function render() {
-				var _this5 = this;
+				var _this4 = this;
 	
 				return _react2.default.createElement(
 					'div',
@@ -37082,7 +37041,7 @@
 						type: 'text',
 						value: this.state.name,
 						onChange: function onChange(e) {
-							_this5.setState({ name: e.target.value });
+							_this4.setState({ name: e.target.value });
 						},
 						placeholder: 'student full name'
 					}),
@@ -37090,14 +37049,14 @@
 						type: 'text',
 						value: this.state.level,
 						onChange: function onChange(e) {
-							_this5.setState({ level: e.target.value });
+							_this4.setState({ level: e.target.value });
 						},
 						placeholder: 'Level (1-5)'
 					}),
 					_react2.default.createElement(
 						'button',
 						{ onClick: function onClick() {
-								_this5.addStudent();
+								_this4.addStudent();
 							} },
 						'Add'
 					),
@@ -37119,37 +37078,198 @@
 							)
 						),
 						this.state.students.map(function (student) {
-							return _react2.default.createElement(
-								'tr',
-								null,
-								_react2.default.createElement(
-									'td',
-									null,
-									student.name
-								),
-								_react2.default.createElement(
-									'td',
-									null,
-									student.level
-								),
-								_react2.default.createElement(
-									'button',
-									{ onClick: function onClick() {
-											_this5.deleteStudent(student._id);
-										} },
-									'Delete'
-								),
-								_react2.default.createElement(
-									'button',
-									{ onClick: function onClick() {
-											_this5.editStudent(student._id);
-										} },
-									'Edit'
-								)
-							);
+							return _react2.default.createElement(_student2.default, { student: student,
+								getStudents: function (_getStudents) {
+									function getStudents() {
+										return _getStudents.apply(this, arguments);
+									}
+	
+									getStudents.toString = function () {
+										return _getStudents.toString();
+									};
+	
+									return getStudents;
+								}(function () {
+									getStudents();
+								}) });
 						})
 					)
 				);
+			}
+		}]);
+	
+		return Students;
+	}(_react2.default.Component);
+	
+	exports.default = Students;
+
+/***/ }),
+/* 230 */
+/*!******************************************!*\
+  !*** ./client/src/components/student.js ***!
+  \******************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 37);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _jquery = __webpack_require__(/*! jquery */ 184);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Student = function (_React$Component) {
+		_inherits(Student, _React$Component);
+	
+		function Student(props) {
+			_classCallCheck(this, Student);
+	
+			var _this = _possibleConstructorReturn(this, (Student.__proto__ || Object.getPrototypeOf(Student)).call(this, props));
+	
+			_this.state = {
+				name: '',
+				level: 0,
+				editFlag: false
+			};
+			return _this;
+		}
+	
+		_createClass(Student, [{
+			key: 'deleteStudent',
+			value: function deleteStudent(id) {
+				var _this2 = this;
+	
+				_jquery2.default.ajax({
+					method: 'DELETE',
+					url: '/api/student/' + id,
+					success: function success(students) {
+						_this2.props.getStudents();
+						console.log("success");
+					},
+					error: function error(data) {
+						console.error('Failed to get students', data);
+					}
+				});
+			}
+		}, {
+			key: 'editStudent',
+			value: function editStudent(id, name, level) {
+				var _this3 = this;
+	
+				if (!this.state.editFlag) {
+					this.setState({ editFlag: true });
+				} else {
+					_jquery2.default.ajax({
+						method: 'PUT',
+						url: '/api/student/' + id,
+						data: { "name": name, "level": level },
+						success: function success(data) {
+							alert("added successfully!");
+							console.log("success", data);
+							_this3.setState({ editFlag: false });
+							_this3.props.getStudents();
+						}
+					});
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this4 = this;
+	
+				if (!this.state.editFlag) {
+					return _react2.default.createElement(
+						'tr',
+						null,
+						_react2.default.createElement(
+							'td',
+							null,
+							this.props.student.name
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							this.props.student.level
+						),
+						_react2.default.createElement(
+							'button',
+							{ onClick: function onClick() {
+									_this4.deleteStudent(_this4.props.student._id);
+								} },
+							'Delete'
+						),
+						_react2.default.createElement(
+							'button',
+							{ onClick: function onClick() {
+									_this4.editStudent(_this4.props.student._id, _this4.state.name, _this4.state.level);
+								} },
+							'Edit'
+						)
+					);
+				} else {
+					return _react2.default.createElement(
+						'tr',
+						null,
+						_react2.default.createElement(
+							'td',
+							null,
+							_react2.default.createElement('input', {
+								type: 'text',
+								value: this.state.name,
+								onChange: function onChange(e) {
+									_this4.setState({ name: e.target.value });
+								},
+								placeholder: 'Edit student name'
+							})
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							_react2.default.createElement('input', {
+								type: 'text',
+								value: this.state.level,
+								onChange: function onChange(e) {
+									_this4.setState({ level: e.target.value });
+								},
+								placeholder: 'Edit student level'
+							})
+						),
+						_react2.default.createElement(
+							'button',
+							{ onClick: function onClick() {
+									_this4.deleteStudent(_this4.props.student._id);
+								} },
+							'Delete'
+						),
+						_react2.default.createElement(
+							'button',
+							{ onClick: function onClick() {
+									_this4.editStudent(_this4.props.student._id, _this4.state.name, _this4.state.level);
+								} },
+							'Edit'
+						)
+					);
+				}
 			}
 		}]);
 	
@@ -37159,7 +37279,7 @@
 	exports.default = Student;
 
 /***/ }),
-/* 230 */
+/* 231 */
 /*!******************************************!*\
   !*** ./client/src/components/pairing.js ***!
   \******************************************/
@@ -37329,7 +37449,7 @@
 	exports.default = Pairing;
 
 /***/ }),
-/* 231 */
+/* 232 */
 /*!******************************************!*\
   !*** ./client/src/components/history.js ***!
   \******************************************/

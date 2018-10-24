@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Student from './student.js';
 
 
 
-class Student extends React.Component {
+class Students extends React.Component {
 
 	constructor(){
 		super();
@@ -31,9 +32,7 @@ class Student extends React.Component {
 			}
   		})
 	}
-	editStudent(){
-
-	}
+	
 	addStudent(){
 		$.ajax({
 			method: 'POST',
@@ -47,20 +46,7 @@ class Student extends React.Component {
 			}
   		})
 	}
-	deleteStudent(id){
-		$.ajax({
-			method: 'DELETE',
-			url: `/api/student/${id}`,
-			success: (students) => {
-				this.getStudents();
-				console.log("success");
-			},
-			error: (data) => {
-			    console.error('Failed to get students', data);
-			}
-  		})
-	}
-
+	
 
 	render(){
 	return (
@@ -85,12 +71,8 @@ class Student extends React.Component {
 					</th>
 					{ this.state.students.map( (student) => {
 												return(
-														<tr>
-															<td>{student.name}</td>
-															<td>{student.level}</td>
-															<button onClick= {() => {this.deleteStudent(student._id)}}>Delete</button>
-															<button onClick= {() => {this.editStudent(student._id)}}>Edit</button>
-														</tr>	
+														<Student student={student}
+														 getStudents = {()=> {getStudents()}} />	
 														
 												)
 											}
@@ -105,4 +87,4 @@ class Student extends React.Component {
 	}
 }
 
-export default Student;
+export default Students;
