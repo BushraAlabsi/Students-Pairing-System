@@ -45,6 +45,7 @@ class Pairing extends React.Component {
 		})
 	}
 	pair(){
+		console.log(this.state.students)
 		var arr1 = this.state.students.slice();
 		var obj,c;
 		var arr2 = []; 
