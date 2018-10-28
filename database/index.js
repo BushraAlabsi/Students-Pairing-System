@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
- mongoose.connect('mongodb://localhost:27017/pairing', { useNewUrlParser: true, 
+ mongoose.connect('mongodb://bushraalabsi:abcd1234@ds117469.mlab.com:17469/pairing', { useNewUrlParser: true, 
 
   useCreateIndex: true
  });
