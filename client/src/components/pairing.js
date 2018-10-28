@@ -45,20 +45,20 @@ class Pairing extends React.Component {
 		})
 	}
 	pair(){
-		//this.getStudents();
+		var arr1 = this.state.students.slice();
 		var obj,c;
 		var arr2 = []; 
-		while(this.state.students.length>1) {
+		while(arr1.length>1) {
 		obj= {};
-		c = Math.floor(Math.random() * (this.state.students.length));
-		obj.student1 = this.state.students[c].name;
-		this.state.students.splice(c,1);
-		c = Math.floor(Math.random() * (this.state.students.length));
-		obj.student2 = this.state.students[c].name;
-		this.state.students.splice(c,1);
+		c = Math.floor(Math.random() * (arr1.length));
+		obj.student1 = arr1[c].name;
+		arr1.splice(c,1);
+		c = Math.floor(Math.random() * (arr1.length));
+		obj.student2 = arr1[c].name;
+		arr1.splice(c,1);
 		arr2.push(obj)
 		}
-		if(this.state.students.length) arr2.push({student1: student1[0].name , student2 :'solo'})
+		if(arr1.length) arr2.push({student1: student1[0].name , student2 :'solo'})
 		this.setState({paired:arr2});
 	}
 
